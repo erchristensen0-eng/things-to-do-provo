@@ -1,0 +1,182 @@
+[
+  {
+    "id": "y-mountain-trail",
+    "name": "Y Mountain Trail",
+    "category": "nature",
+    "description": "Iconic hike up to the large Y visible from across the valley. Steep but rewarding with panoramic views of Provo and Utah Lake.",
+    "location": "Y Mountain, Provo, UT",
+    "specs": {
+      "distance": "2.4 miles round trip",
+      "elevation_gain": "1,100 feet",
+      "difficulty": "Moderate to Strenuous",
+      "duration": "2-3 hours"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall"],
+      "winter_accessible": true,
+      "winter_notes": "Can be icy; microspikes recommended"
+    },
+    "sunday_open": true,
+    "dry": false
+  },
+  {
+    "id": "bridal-veil-falls",
+    "name": "Bridal Veil Falls",
+    "category": "nature",
+    "description": "Stunning 607-foot double waterfall. Popular for hiking, ice climbing in winter, and tubing in summer.",
+    "location": "Provo Canyon, UT",
+    "specs": {
+      "trail_length": "0.5 miles (easy access)",
+      "ice_climbing_season": "December - February",
+      "tubing_season": "June - September"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true,
+      "winter_notes": "Ice climbing available; falls may freeze"
+    },
+    "sunday_open": true,
+    "dry": false
+  },
+  {
+    "id": "monte-l-bean-life-science-museum",
+    "name": "Monte L. Bean Life Science Museum",
+    "category": "culture",
+    "description": "Free natural history museum featuring wildlife exhibits, interactive displays, and educational programs.",
+    "location": "Brigham Young University, Provo, UT",
+    "specs": {
+      "admission": "Free",
+      "hours": "Monday-Saturday: 10am-9pm, Closed Sundays"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true
+    },
+    "sunday_open": false,
+    "dry": true
+  },
+  {
+    "id": "museum-of-peoples-and-cultures",
+    "name": "Museum of Peoples and Cultures",
+    "category": "culture",
+    "description": "BYU museum showcasing anthropology and archaeology collections from around the world.",
+    "location": "Brigham Young University, Provo, UT",
+    "specs": {
+      "admission": "Free",
+      "hours": "Monday-Friday: 9am-5pm, Closed Weekends"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true
+    },
+    "sunday_open": false,
+    "dry": true
+  },
+  {
+    "id": "velour-live-music",
+    "name": "Velour Live Music Gallery",
+    "category": "entertainment",
+    "description": "Premier live music venue featuring local and touring artists. Intimate setting with great acoustics.",
+    "location": "135 N University Ave, Provo, UT",
+    "specs": {
+      "admission": "Varies by show",
+      "hours": "Show times vary, check website"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true
+    },
+    "sunday_open": false,
+    "dry": true
+  },
+  {
+    "id": "provo-beach-resort",
+    "name": "Provo Beach Resort",
+    "category": "entertainment",
+    "description": "Family entertainment center with bowling, arcade games, ropes course, and flowrider.",
+    "location": "1777 S State St, Provo, UT",
+    "specs": {
+      "admission": "Varies by activity",
+      "hours": "Monday-Thursday: 11am-10pm, Friday-Saturday: 11am-11pm, Sunday: 12pm-8pm"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true
+    },
+    "sunday_open": true,
+    "dry": true
+  },
+  {
+    "id": "communities-that-care",
+    "name": "Communities That Care",
+    "category": "culinary",
+    "description": "Local favorite for breakfast and lunch. Known for fresh ingredients and friendly service.",
+    "location": "1777 N University Pkwy, Provo, UT",
+    "specs": {
+      "price_range": "$$",
+      "hours": "Monday-Saturday: 7am-3pm, Closed Sundays"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true
+    },
+    "sunday_open": false,
+    "dry": true
+  },
+  {
+    "id": "black-sheep-cafe",
+    "name": "Black Sheep Cafe",
+    "category": "culinary",
+    "description": "Award-winning Native American cuisine featuring traditional and modern dishes.",
+    "location": "19 N University Ave, Provo, UT",
+    "specs": {
+      "price_range": "$$$",
+      "hours": "Tuesday-Saturday: 11am-9pm, Closed Sunday-Monday"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true
+    },
+    "sunday_open": false,
+    "dry": true
+  },
+  {
+    "id": "squaw-peak-trail",
+    "name": "Squaw Peak Trail",
+    "category": "nature",
+    "description": "Challenging hike to one of the highest peaks in the area with spectacular 360-degree views.",
+    "location": "Rock Canyon, Provo, UT",
+    "specs": {
+      "distance": "7.2 miles round trip",
+      "elevation_gain": "3,200 feet",
+      "difficulty": "Strenuous",
+      "duration": "4-6 hours"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall"],
+      "winter_accessible": false,
+      "winter_notes": "Trail often snow-covered and dangerous in winter"
+    },
+    "sunday_open": true,
+    "dry": false
+  },
+  {
+    "id": "provo-river-trail",
+    "name": "Provo River Trail",
+    "category": "nature",
+    "description": "Scenic paved trail following the Provo River. Perfect for walking, running, or biking.",
+    "location": "Provo Canyon to Utah Lake",
+    "specs": {
+      "distance": "15 miles (one way)",
+      "surface": "Paved",
+      "difficulty": "Easy"
+    },
+    "seasonality": {
+      "best_seasons": ["spring", "summer", "fall", "winter"],
+      "winter_accessible": true,
+      "winter_notes": "May be icy; use caution"
+    },
+    "sunday_open": true,
+    "dry": false
+  }
+]

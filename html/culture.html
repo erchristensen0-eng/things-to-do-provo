@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Category - Things To Do in Provo</title>
+    <meta name="description" content="Browse activities in this category">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</head>
+<body class="antialiased bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-800">
+                    Things To Do in Provo
+                </a>
+                
+                <nav class="flex flex-wrap gap-4 items-center">
+                    <a href="nature.html" class="text-gray-700 hover:text-blue-600 font-medium">Nature</a>
+                    <a href="culture.html" class="text-gray-700 hover:text-blue-600 font-medium">Culture</a>
+                    <a href="entertainment.html" class="text-gray-700 hover:text-blue-600 font-medium">Entertainment</a>
+                    <a href="culinary.html" class="text-gray-700 hover:text-blue-600 font-medium">Culinary</a>
+                    
+                    <div class="flex gap-4 items-center border-l pl-4 ml-4">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="winter-mode" class="w-4 h-4 text-blue-600 rounded">
+                            <span class="text-sm font-medium text-gray-700">Winter Mode</span>
+                        </label>
+                        
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="sunday-only" class="w-4 h-4 text-blue-600 rounded">
+                            <span class="text-sm font-medium text-gray-700">Sunday Open</span>
+                        </label>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 id="category-title" class="text-4xl font-bold text-gray-900 mb-4"></h1>
+            <p id="activity-count" class="text-gray-600"></p>
+        </div>
+
+        <div id="filter-alerts"></div>
+        <div id="activities-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; <span id="year"></span> Things To Do in Provo, Utah. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Get category from URL
+        function getCategoryFromURL() {
+            const filename = window.location.pathname.split('/').pop();
+            return filename.replace('.html', '');
+        }
+
+        function renderActivities() {
+            const category = getCategoryFromURL();
+            const container = document.getElementById('activities-container');
+            const filterAlerts = document.getElementById('filter-alerts');
+            const categoryTitle = document.getElementById('category-title');
+            const activityCount = document.getElementById('activity-count');
+            const pageTitle = document.getElementById('page-title');
+            
+            // Clear previous content
+            container.innerHTML = '';
+            filterAlerts.innerHTML = '';
+
+            // Set category title
+            const categoryName = getCategoryDisplayName(category);
+            categoryTitle.textContent = categoryName;
+            pageTitle.textContent = `${categoryName} - Things To Do in Provo`;
+
+            // Get and filter activities
+            let categoryActivities = getActivitiesByCategory(category);
+            const filteredCount = categoryActivities.length;
+            categoryActivities = filterActivities(categoryActivities, filters);
+            
+            // Show filter alerts
+            if (filters.winterMode) {
+                filterAlerts.innerHTML += `
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded">
+                        <p class="text-blue-700">
+                            <strong>Winter Mode Active:</strong> Showing only winter-accessible activities
+                        </p>
+                    </div>
+                `;
+            }
+
+            if (filters.sundayOnly) {
+                filterAlerts.innerHTML += `
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-8 rounded">
+                        <p class="text-green-700">
+                            <strong>Sunday Filter Active:</strong> Showing only activities open on Sundays
+                        </p>
+                    </div>
+                `;
+            }
+
+            // Update count
+            activityCount.textContent = `${categoryActivities.length} ${categoryActivities.length === 1 ? 'activity' : 'activities'} found`;
+
+            // Render activities
+            if (categoryActivities.length > 0) {
+                container.innerHTML = categoryActivities.map(activity => createActivityCard(activity)).join('');
+            } else {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <p class="text-gray-500 text-lg mb-4">No activities found matching your filters.</p>
+                        <p class="text-gray-400">Try adjusting your Winter Mode or Sunday Filter settings.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function createActivityCard(activity) {
+            return `
+                <a href="${activity.category}/${activity.id}.html" class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">${activity.name}</h3>
+                            ${activity.dry ? '<span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded">Dry</span>' : ''}
+                        </div>
+                        <p class="text-gray-600 mb-3 line-clamp-2">${activity.description}</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>${activity.location}</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-xs text-gray-500">
+                            ${activity.sunday_open ? '<span class="flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Open Sunday</span>' : ''}
+                            <span class="capitalize">${activity.category}</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderActivities();
+        });
+    </script>
+</body>
+</html>
