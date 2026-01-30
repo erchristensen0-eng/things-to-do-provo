@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Category - Things To Do in Provo</title>
-    <meta name="description" content="Browse activities in this category">
+    <meta name="description" id="meta-description" content="Discover Provo's rich cultural heritage through museums, art galleries, and educational attractions. Experience the history and culture of Utah Valley.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" id="canonical-link" href="https://www.thingstodoprovo.com/culture.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" id="og-url" content="https://www.thingstodoprovo.com/culture.html">
+    <meta property="og:title" id="og-title" content="Culture & Museums - Things To Do in Provo">
+    <meta property="og:description" id="og-description" content="Discover Provo's rich cultural heritage through museums, art galleries, and educational attractions. Experience the history and culture of Utah Valley.">
+    <meta property="og:image" content="https://www.thingstodoprovo.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" id="twitter-url" content="https://www.thingstodoprovo.com/culture.html">
+    <meta name="twitter:title" id="twitter-title" content="Culture & Museums - Things To Do in Provo">
+    <meta name="twitter:description" id="twitter-description" content="Discover Provo's rich cultural heritage through museums, art galleries, and educational attractions. Experience the history and culture of Utah Valley.">
+    <meta name="twitter:image" content="https://www.thingstodoprovo.com/images/og-image.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -118,6 +135,32 @@
             const categoryName = getCategoryDisplayName(category);
             categoryTitle.textContent = categoryName;
             pageTitle.textContent = `${categoryName} - Things To Do in Provo`;
+            
+            // Update meta tags dynamically
+            const descriptions = {
+                nature: "Explore the best nature and outdoor activities in Provo, Utah. Discover hiking trails, waterfalls, scenic views, and outdoor adventures perfect for all seasons.",
+                culture: "Discover Provo's rich cultural heritage through museums, art galleries, and educational attractions. Experience the history and culture of Utah Valley.",
+                entertainment: "Find the best entertainment in Provo, Utah. From live music venues to family fun centers, discover exciting activities and events for all ages.",
+                culinary: "Explore Provo's diverse culinary scene. Discover local restaurants, cafes, and dining experiences featuring fresh ingredients and unique flavors."
+            };
+            
+            const metaDesc = document.getElementById('meta-description');
+            const ogTitle = document.getElementById('og-title');
+            const ogDesc = document.getElementById('og-description');
+            const twitterTitle = document.getElementById('twitter-title');
+            const twitterDesc = document.getElementById('twitter-description');
+            const canonicalLink = document.getElementById('canonical-link');
+            const ogUrl = document.getElementById('og-url');
+            const twitterUrl = document.getElementById('twitter-url');
+            
+            if (metaDesc) metaDesc.content = descriptions[category] || descriptions.nature;
+            if (ogTitle) ogTitle.content = `${categoryName} - Things To Do in Provo`;
+            if (ogDesc) ogDesc.content = descriptions[category] || descriptions.nature;
+            if (twitterTitle) twitterTitle.content = `${categoryName} - Things To Do in Provo`;
+            if (twitterDesc) twitterDesc.content = descriptions[category] || descriptions.nature;
+            if (canonicalLink) canonicalLink.href = `https://www.thingstodoprovo.com/${category}.html`;
+            if (ogUrl) ogUrl.content = `https://www.thingstodoprovo.com/${category}.html`;
+            if (twitterUrl) twitterUrl.content = `https://www.thingstodoprovo.com/${category}.html`;
 
             // Get and filter activities
             let categoryActivities = getActivitiesByCategory(category);

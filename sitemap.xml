@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.thingstodoprovo.com/index.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Category Pages -->
+  <url>
+    <loc>https://www.thingstodoprovo.com/nature.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/culture.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/entertainment.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/culinary.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Activity Detail Pages -->
+  <url>
+    <loc>https://www.thingstodoprovo.com/nature/y-mountain-trail.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/nature/bridal-veil-falls.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/nature/provo-river-trail.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/nature/squaw-peak-trail.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/culture/monte-l-bean-life-science-museum.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/culture/museum-of-peoples-and-cultures.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/entertainment/provo-beach-resort.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/entertainment/velour-live-music.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/culinary/black-sheep-cafe.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.thingstodoprovo.com/culinary/communities-that-care.html</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

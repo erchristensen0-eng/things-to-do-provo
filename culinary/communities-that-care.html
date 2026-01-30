@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Activity - Things To Do in Provo</title>
     <meta name="description" id="meta-description" content="Activity description">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" id="canonical-link" href="">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" id="og-url" content="">
+    <meta property="og:title" id="og-title" content="">
+    <meta property="og:description" id="og-description" content="">
+    <meta property="og:image" id="og-image" content="https://www.thingstodoprovo.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" id="twitter-url" content="">
+    <meta name="twitter:title" id="twitter-title" content="">
+    <meta name="twitter:description" id="twitter-description" content="">
+    <meta name="twitter:image" id="twitter-image" content="https://www.thingstodoprovo.com/images/og-image.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -138,21 +155,50 @@
             }
 
             // Set page metadata
-            pageTitle.textContent = `${activity.name} | Things To Do in Provo`;
+            const pageUrl = `https://www.thingstodoprovo.com/${activity.category}/${activity.id}.html`;
+            const fullTitle = `${activity.name} | Things To Do in Provo`;
+            
+            pageTitle.textContent = fullTitle;
             metaDescription.content = activity.description;
             backLink.href = `../${activity.category}.html`;
             backLink.textContent = `← Back to ${getCategoryDisplayName(activity.category)}`;
+            
+            // Set canonical URL
+            const canonicalLink = document.getElementById('canonical-link');
+            if (canonicalLink) canonicalLink.href = pageUrl;
+            
+            // Set Open Graph tags
+            const ogUrl = document.getElementById('og-url');
+            const ogTitle = document.getElementById('og-title');
+            const ogDesc = document.getElementById('og-description');
+            if (ogUrl) ogUrl.content = pageUrl;
+            if (ogTitle) ogTitle.content = fullTitle;
+            if (ogDesc) ogDesc.content = activity.description;
+            
+            // Set Twitter Card tags
+            const twitterUrl = document.getElementById('twitter-url');
+            const twitterTitle = document.getElementById('twitter-title');
+            const twitterDesc = document.getElementById('twitter-description');
+            if (twitterUrl) twitterUrl.content = pageUrl;
+            if (twitterTitle) twitterTitle.content = fullTitle;
+            if (twitterDesc) twitterDesc.content = activity.description;
 
-            // Generate JSON-LD schema
-            const schema = getJsonLdSchema(activity);
-            let schemaScript = document.getElementById('json-ld-schema');
-            if (!schemaScript) {
-                schemaScript = document.createElement('script');
-                schemaScript.id = 'json-ld-schema';
+            // Generate JSON-LD schemas
+            const schemas = getJsonLdSchemas(activity);
+            const schemaContainer = document.getElementById('json-ld-container') || document.head;
+            
+            // Remove old schemas
+            const oldSchemas = document.querySelectorAll('script[type="application/ld+json"]');
+            oldSchemas.forEach(s => s.remove());
+            
+            // Add new schemas
+            schemas.forEach((schema, index) => {
+                const schemaScript = document.createElement('script');
                 schemaScript.type = 'application/ld+json';
-                document.head.appendChild(schemaScript);
-            }
-            schemaScript.textContent = JSON.stringify(schema);
+                schemaScript.id = `json-ld-schema-${index}`;
+                schemaScript.textContent = JSON.stringify(schema);
+                schemaContainer.appendChild(schemaScript);
+            });
 
             // Render activity content
             content.innerHTML = `
@@ -221,7 +267,12 @@
             `;
         }
 
-        function getJsonLdSchema(activity) {
+        function getJsonLdSchemas(activity) {
+            const pageUrl = `https://www.thingstodoprovo.com/${activity.category}/${activity.id}.html`;
+            const categoryUrl = `https://www.thingstodoprovo.com/${activity.category}.html`;
+            const categoryName = getCategoryDisplayName(activity.category);
+            
+            // Base schema with enhanced properties
             const baseSchema = {
                 '@context': 'https://schema.org',
                 '@type': activity.category === 'culinary' ? 'Restaurant' : 
@@ -229,35 +280,71 @@
                          'TouristAttraction',
                 name: activity.name,
                 description: activity.description,
+                url: pageUrl,
+                image: 'https://www.thingstodoprovo.com/images/og-image.jpg',
                 address: {
                     '@type': 'PostalAddress',
                     addressLocality: 'Provo',
                     addressRegion: 'UT',
                     addressCountry: 'US',
+                    streetAddress: activity.location
                 },
+                geo: {
+                    '@type': 'GeoCoordinates',
+                    latitude: 40.2338,
+                    longitude: -111.6585
+                }
             };
 
+            // Category-specific enhancements
+            let mainSchema;
             if (activity.category === 'culinary') {
-                return {
+                mainSchema = {
                     ...baseSchema,
                     '@type': 'Restaurant',
                     servesCuisine: 'Various',
                     priceRange: activity.specs.price_range || '$$',
                 };
-            }
-
-            if (activity.category === 'culture') {
-                return {
+            } else if (activity.category === 'culture') {
+                mainSchema = {
                     ...baseSchema,
                     '@type': 'Museum',
                     openingHours: activity.specs.hours || 'See website',
                 };
+            } else {
+                mainSchema = {
+                    ...baseSchema,
+                    '@type': 'TouristAttraction',
+                };
             }
 
-            return {
-                ...baseSchema,
-                '@type': 'TouristAttraction',
+            // Breadcrumb schema
+            const breadcrumbSchema = {
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: 'Home',
+                        item: 'https://www.thingstodoprovo.com/index.html'
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: categoryName,
+                        item: categoryUrl
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 3,
+                        name: activity.name,
+                        item: pageUrl
+                    }
+                ]
             };
+
+            return [mainSchema, breadcrumbSchema];
         }
 
         // Initialize on page load

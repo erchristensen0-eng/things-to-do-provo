@@ -6,6 +6,23 @@
     <title>Things To Do in Provo, Utah</title>
     <meta name="description" content="Discover the best activities, attractions, restaurants, and entertainment in Provo, Utah. Your complete guide to exploring Provo.">
     <meta name="keywords" content="Provo Utah, things to do, activities, attractions, restaurants, entertainment, hiking, museums">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.thingstodoprovo.com/index.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.thingstodoprovo.com/index.html">
+    <meta property="og:title" content="Things To Do in Provo, Utah">
+    <meta property="og:description" content="Discover the best activities, attractions, restaurants, and entertainment in Provo, Utah. Your complete guide to exploring Provo.">
+    <meta property="og:image" content="https://www.thingstodoprovo.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.thingstodoprovo.com/index.html">
+    <meta name="twitter:title" content="Things To Do in Provo, Utah">
+    <meta name="twitter:description" content="Discover the best activities, attractions, restaurants, and entertainment in Provo, Utah. Your complete guide to exploring Provo.">
+    <meta name="twitter:image" content="https://www.thingstodoprovo.com/images/og-image.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -98,6 +115,36 @@
         </div>
     </footer>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Things To Do in Provo, Utah",
+      "url": "https://www.thingstodoprovo.com",
+      "description": "Discover the best activities, attractions, restaurants, and entertainment in Provo, Utah. Your complete guide to exploring Provo.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.thingstodoprovo.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Things To Do in Provo",
+      "url": "https://www.thingstodoprovo.com",
+      "logo": "https://www.thingstodoprovo.com/images/og-image.jpg",
+      "description": "Your complete guide to activities, attractions, restaurants, and entertainment in Provo, Utah.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Provo",
+        "addressRegion": "UT",
+        "addressCountry": "US"
+      }
+    }
+    </script>
     <script>
         // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
