@@ -6,32 +6,66 @@
     <title id="page-title">Category - Things To Do in Provo</title>
     <meta name="description" content="Browse activities in this category">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'light-blue': {
+                50: '#e6f2ff',
+                100: '#b3d9ff',
+                200: '#80bfff',
+                300: '#4da6ff',
+                400: '#1a8cff',
+                500: '#0073e6',
+                600: '#005cb3',
+                700: '#004580',
+                800: '#002e4d',
+                900: '#00171a',
+              },
+              'light-orange': {
+                50: '#fff4e6',
+                100: '#ffe0b3',
+                200: '#ffcc80',
+                300: '#ffb84d',
+                400: '#ffa31a',
+                500: '#e68900',
+                600: '#b36d00',
+                700: '#805000',
+                800: '#4d3300',
+                900: '#1a1600',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <script src="data.js"></script>
     <script src="script.js"></script>
 </head>
 <body class="antialiased bg-gray-50">
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-light-blue-50 shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-800">
+                <a href="index.html" class="text-2xl font-bold text-light-blue-600 hover:text-light-orange-500">
                     Things To Do in Provo
                 </a>
                 
                 <nav class="flex flex-wrap gap-4 items-center">
-                    <a href="nature.html" class="text-gray-700 hover:text-blue-600 font-medium">Nature</a>
-                    <a href="culture.html" class="text-gray-700 hover:text-blue-600 font-medium">Culture</a>
-                    <a href="entertainment.html" class="text-gray-700 hover:text-blue-600 font-medium">Entertainment</a>
-                    <a href="culinary.html" class="text-gray-700 hover:text-blue-600 font-medium">Culinary</a>
+                    <a href="nature.html" class="text-gray-700 hover:text-light-orange-500 font-medium">Nature</a>
+                    <a href="culture.html" class="text-gray-700 hover:text-light-orange-500 font-medium">Culture</a>
+                    <a href="entertainment.html" class="text-gray-700 hover:text-light-orange-500 font-medium">Entertainment</a>
+                    <a href="culinary.html" class="text-gray-700 hover:text-light-orange-500 font-medium">Culinary</a>
                     
-                    <div class="flex gap-4 items-center border-l pl-4 ml-4">
+                    <div class="flex gap-4 items-center border-l border-light-blue-300 pl-4 ml-4">
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" id="winter-mode" class="w-4 h-4 text-blue-600 rounded">
+                            <input type="checkbox" id="winter-mode" class="w-4 h-4 text-light-blue-600 rounded">
                             <span class="text-sm font-medium text-gray-700">Winter Mode</span>
                         </label>
                         
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" id="sunday-only" class="w-4 h-4 text-blue-600 rounded">
+                            <input type="checkbox" id="sunday-only" class="w-4 h-4 text-light-orange-500 rounded">
                             <span class="text-sm font-medium text-gray-700">Sunday Open</span>
                         </label>
                     </div>
@@ -52,7 +86,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 mt-16">
+    <footer class="bg-light-blue-800 text-white py-8 mt-16">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; <span id="year"></span> Things To Do in Provo, Utah. All rights reserved.</p>
         </div>
@@ -93,8 +127,8 @@
             // Show filter alerts
             if (filters.winterMode) {
                 filterAlerts.innerHTML += `
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded">
-                        <p class="text-blue-700">
+                    <div class="bg-light-blue-100 border-l-4 border-light-blue-400 p-4 mb-8 rounded">
+                        <p class="text-light-blue-800">
                             <strong>Winter Mode Active:</strong> Showing only winter-accessible activities
                         </p>
                     </div>
@@ -103,8 +137,8 @@
 
             if (filters.sundayOnly) {
                 filterAlerts.innerHTML += `
-                    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-8 rounded">
-                        <p class="text-green-700">
+                    <div class="bg-light-orange-100 border-l-4 border-light-orange-400 p-4 mb-8 rounded">
+                        <p class="text-light-orange-800">
                             <strong>Sunday Filter Active:</strong> Showing only activities open on Sundays
                         </p>
                     </div>
@@ -133,7 +167,7 @@
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-2">
                             <h3 class="text-xl font-bold text-gray-900">${activity.name}</h3>
-                            ${activity.dry ? '<span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded">Dry</span>' : ''}
+                            ${activity.dry ? '<span class="bg-light-orange-200 text-light-orange-800 text-xs font-semibold px-2 py-1 rounded">Dry</span>' : ''}
                         </div>
                         <p class="text-gray-600 mb-3 line-clamp-2">${activity.description}</p>
                         <div class="flex items-center text-sm text-gray-500 mb-2">
